@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        #background {
+            background-image: url(back.jpg);
+        }
+
+        h1 {
+            position: absolute;
+            top: 220px;
+            color: aliceblue;
+            margin-left: 3%;
+        }
+
+        #book p {
+            font-size: x-large;
+            width: 700px;
+            position: absolute;
+            top: 270px;
+            padding-left: 5%;
+        }
+
+        #bookaudio {
+            position: absolute;
+            left: 50%;
+            top: 220px;
+            z-index: 2;
+            width: 200px;
+        }
+
+        #link {
+            text-decoration: none;
+            border: solid 1px #ede4cf;
+            background-color: #ede4cf9c;
+            color: #4e0f17;
+            font-family: serif;
+            font-size: x-large;
+            font-weight: 300;
+            height: 40PX;
+            width: 300PX;
+            text-align: center;
+            line-height: 35PX;
+            border-radius: 20PX;
+            position: absolute;
+            top: 420px;
+            left: 10%;
+        }
+
+        #link:hover {
+            background-color: #4e0f174b;
+            color: #ede4cf;
+
+        }
+
+        #book {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 10;
+            color: white;
+        }
+
+        /* /-------------------------------------------------------------carousel-----------------------------------------------------------------/ */
+        #box {
+            background-color: rgb(0, 0, 0);
+        }
+
+        #slider {
+            position: relative;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 90vh;
+
+        }
+
+        #imgbase {
+            width: 100%;
+            display: block;
+            opacity: 0.4;
+        }
+
+        /* /------------------------------------------------------------------------card-----------------------------------------------------/  */
+        h2 {
+            text-align: center;
+        }
+
+        .selector {
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .card {
+            position: relative;
+            width: 180px;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+            transition: .2s;
+
+        }
+
+        .card img:hover {
+            background-color: black;
+        }
+
+        .card audio {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%); transition:2s;
+            opacity: 0;
+            width: 180px;
+        }
+
+        .card:hover audio {
+            opacity: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: 0.3s;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card:hover .overlay {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* /-------------------------------------------------------------------more--------------------------------------------------------------/  */
+        .arrow {
+            width: 50PX;
+            height: 50px;
+            border-radius: 50%;
+            border: 4px solid #4e0f17;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background-color: #4e0f17;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: x-large;
+        }
+
+        .arrow:hover {
+            border-color: #ede4cf;
+        }
+
+        @media (max-width: 992px) {
+            #bookaudio {
+                width: 250px;
+                position: absolute;
+                top: 220px;
+
+            }
+
+            #title {
+                font-size: 30px;
+                margin-left: 0%;
+            }
+
+            #link {
+                width: 250px;
+                font-size: 18px;
+                top: 390px;
+            }
+
+            #book p {
+                font-size: medium;
+                width: 600px;
+                padding-left: 2%;
+                width: 350PX;
+            }
+
+        }
+
+        /* mobile */
+        @media (max-width: 600px) {
+            #bookaudio {
+                width: 200px;
+                position: absolute;
+                right: 1%;
+
+            }
+
+            #title {
+                font-size: 22px;
+            }
+
+            #link {
+                height: 30PX;
+                width: 190px;
+                font-size: 17px;
+                position: absolute;
+                TOP: 450PX;
+
+            }
+
+            #book p {
+                width: 210px;
+                letter-spacing: 0.5px;
+                word-spacing: 0.5px;
+                font-size: 15px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="book">
+        <h1 id="title">Donnez vie aux livres avec READLY</h1>
+        <p>Nous proposons plus de 1500 livres audio.<BR>pour vivez d'une expérience d'écoute unique et accédez à des
+            millions de minutes de livres audio et d'œuvres littéraires sur notre plateforme.</p>
+        <a href="index3.html" id="link">Pour plus d'informations</a>
+        <img src="iconimagbook.jpg" id="bookaudio" style="border-radius: 100%;">
+    </div>
+    <div id="slider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item active" id="box">
+                <img src="animation1.jpg" class="w-100" id="imgbase">
+            </div>
+            <div class="carousel-item">
+                <img src="animation2.jpg" class="w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="animation3.jpg" class="w-100">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <div id="background">
+
+        <h2><strong>Romans Romontique</strong></h2>
+        <div class="selector">
+            <div class="card m-2 shadow-lg">
+                <img src="ahmedcher9awi.jpg" height="100%">
+                <div class="overlay">
+                    <h3>ليطمئن قلبي</h3>
+                    <p> للكاتب أدهم شرقاوي</p>
+                </div>
+                <audio controls src=""></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="notebook.jpg" height="100%">
+                <div class="overlay">
+                    <h3>The Notebook</h3>
+                    <p>Nicholas Sparks</p>
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="mebeforyou.jpg" height="100%">
+                <div class="overlay">
+                    <h3>Me Before You</h3>
+                    <p>Jojo Moyes</p>
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="ahbabtoka.jpg" height="100%">
+                <div class="overlay">
+                    <h3>احببتك اكثر مما ينبغي</h3>
+                    <p>أثير عبدالله النشمي</p>
+
+                </div>
+                <audio controls src=""></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="inthismoment.jpg" height="100%">
+                <div class="overlay">
+                    <h3>In This Moment</h3>
+                    <p> Karen Kingsbury</p>
+
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="lovemom.jpg">
+                <div class="overlay">
+                    <h3>Love, Mom</h3>
+                    <p>Iliana Xander</p>
+
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="love.jpg" height="100%">
+                <div class="overlay">
+                    <h3>Field Notes on Love</h3>
+                    <p> Jennifer E. Smith</p>
+            
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="index9.html" class="arrow">></a>
+            </div>
+        </div>
+        <h2><strong>Biographies</strong></h2>
+        <div class="selector">
+            <div class="card m-2 shadow-lg">
+                <img src="longwalkto.png" height="100%">
+                <div class="overlay">
+                    <H3>Long Walk to Freedom </H3>
+                    <P>Nelson Mandela</P>
+                </div>
+                <audio controls  src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="becoming.jpg" height="100%">
+                <div class="overlay">
+                    <h3>Becoming</h3>
+                    <p>Michelle Obama</p>
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a" ></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="diarygirl.jpg" height="100%">
+                <div class="overlay">
+                    <h3>the diary of a younger girl</h3>
+                    <p>Anne Frank</p>
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="myexperiments.jpg" height="100%">
+                <div class="overlay">
+                    <h3>the story of my experiments with truth</h3>
+                    <p> Mahatma Gandhi</p>
+
+                </div>
+                <audio controls src=""></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="lala.jpg" height="100%">
+                <div class="overlay">
+                    <h3>I am Malala</h3>
+                    <p> Malala Yousafzai </p>
+
+                </div>
+                <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+            </div>
+            <div class="card m-2 shadow-lg">
+                <img src="steven.jpg" height="100%">
+                <div class="overlay">
+                    <h3>Steve Jobs</h3>
+                    <p>Walter Isaacson</p>
+
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+            
+                <img src="imam3liy.jpg" height="100%">
+                <div class="overlay">
+                    <h3>عبقرية الامام علي</h3>
+                    <p>عباس محمود العقاد</p>
+            
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="index9.html" class="arrow">></a>
+            </div>
+        </div>
+        <h2><strong>Développement humain et perfectionnement de soi</strong></h2>
+        <div class="selector">
+            <div class="card m-1 shadow-lg">
+                <img src="developement.jpg" height="100%">
+                <div class="overlay">
+                    <h3>Theories of Human Development</h3>
+                    <p>Barbara M. Newman & Philip R. Newman </p>
+
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="jalssiyanafssiya.jpg" height="100%">
+                <div class="overlay">
+                    <h3>
+                        جلسات نفسية: حتى تصل إلى السكينة النفسية</h3>
+                    <p> محمد إبراهيم</p>
+
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="trauma.jpg" height="100%">
+                <div class="overlay">
+                    <h3>Trauma and the Soul</h3>
+                    <p> Donald Kalsched</p>
+
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="lamobalat.jpg" height="100%">
+                <div class="overlay">
+                    <h3>فن اللامبالاة</h3>
+                    <p>مارك مانسون</p>
+
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="abi.jpg" height="100%">
+                <div class="overlay">
+                    <h3>ابي الذي اكره</h3>
+                    <p> د. عماد رشاد عثمان</p>
+
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="3o9adoka.jpg" height="100%">
+                <div class="overlay">
+                    <h3>عقدك النفسية سجنك الأبدي</h3>
+                    <p> يوسف الحسني</p>
+
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+            
+                <img src="asfar.jpg" height="100%">
+                <div class="overlay">
+                    <h3>مميز بالاصفر</h3>
+                    <p> Rochelle Pennington, H. Jackson Brown, Jr.</p>
+            
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+
+                <a href="index9.html" id="aa" class="arrow">></a>
+            </div>
+        </div>
+        <h2><strong>Pensée politique</strong></h2>
+        <div class="selector ">
+            <div class="card m-1 shadow-lg">
+
+                <img src="siyassawadin.jpg" height="100%">
+                <div class="overlay">
+                    <h3>السياسة والدين بين المبادىء والتاريخ </h3>
+                    <p>د. سعيد عبدالله حارب</p>
+                </div>
+                <audio controls src="mebeforyou.mp4"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="thewalth.jpg">
+                <div class="overlay">
+                    <h3>The Wealth Of Nations</h3>
+                    <p>Adam Smith</p>
+
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="limalanarta9i.jpg" height="100%">
+                <div class="overlay">
+                    <h3>لماذا لا نرتقي أسباب تخلف الشعوب</h3>
+                    <p> احمد حسين الرفاعي</p>
+
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="goodeconomique.jpg" height="100%">
+                <div class="overlay">
+                    <h3>Good Economics for Hard Times</h3>
+                    <p>Abhijit V. Banerjee</p>
+
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="siyassawetarikh.jpg" height="100%">
+                <div class="overlay">
+                    <h3>مونتسكيو السياسة والتاريخ</h3>
+                    <p>لوي التوسير</p>
+
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+
+                <img src="theprince.jpg" height="100%">
+                <div class="overlay">
+                    <h3>The Prince de Niccolo Machiavelli</h3>
+                    <p>De Nicolo Machiavelli</p>
+
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="card m-1 shadow-lg">
+            
+                <img src="isstirerab.jpg" height="100%">
+                <div class="overlay">
+                    <h3>الاستغراب: موجز النزاعات المعادية للغرب</h3>
+                    <p>Avishai Margalit & Ian Buruma</p>
+            
+                </div>
+                <audio controls src="Me Before You _Chapter One _Audio Book(M4A_128K).m4a"></audio>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+
+                <a href="index9.html" class="arrow" >></a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

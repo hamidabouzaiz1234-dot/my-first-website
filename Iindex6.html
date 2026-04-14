@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.min.css">
+    <script  src="bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
+    <style>
+        #zoom1{
+            animation: ZOOM 1s infinite;
+        }
+        @keyframes ZOOM{
+               0%,100%{
+                transform: scale(1);
+               }
+               50%{
+                transform: scale(1.2,1);
+                color: rgb(255, 128, 0);
+               }
+        }
+        #zoom2{
+            font-weight: normal;
+            animation: boldtext 2s infinite;
+        }
+        @keyframes boldtext{
+            50%{ font-weight:bold;
+
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div style="margin-left: 400px;">
+        <div class="alert ">
+            <button type="button" class="btn btn-close alert-dismissible" data-bs-dismiss="alert"></button>
+        
+   <div class="card " style="width: 50%; height: 500px;">
+        <h1 class="card-title" style="text-align: center;">Promotion </h1>
+        <h6 class="card-title" style="margin-left: 130px;">Promo Spéciale – Livres les plus demandés !🔥</h6>
+        <p style="color: rgb(255, 5, 5); text-align: center;" class="ps-5 pe-5" id="zoom2">
+            Profitez de -25% sur la location des livres les plus populaires cette semaine.
+            Une sélection idéale pour découvrir les meilleures lectures du moment
+        </p>
+        <ul style=" text-align: center;list-style: none;">
+            <li id="zoom1">    Durée : Offre valable jusqu’au 30 novembre</li>
+            <li>Catégories : Roman – Thriller – Développement personnel</li>
+        </ul>
+        <div class="card-footer"><img src="promotion2.jpg" style="width: 100%; height: 210px;"> </div>
+        <button class="btn btn-success ps-5" style="width: 100%;">louer maintenant</button>
+   </div>
+    </div>
+    </div>
+</body>
+</html>
